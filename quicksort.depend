@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1558888316 source:c:\users\pauli\documents\projetos\quicksort\quicksort\quicksort.cpp
+	"Quicksort.h"
+
+1558888283 c:\users\pauli\documents\projetos\quicksort\quicksort\quicksort.h
+
+1558888369 source:c:\users\pauli\documents\projetos\quicksort\quicksort\main.cpp
+	<iostream>
+	"Quicksort.h"
+
+1558888369 source:c:\users\pauli\documents\projetos\quicksort\main.cpp
+	<iostream>
+	"Quicksort.h"
+
+1558888283 c:\users\pauli\documents\projetos\quicksort\quicksort.h
+
+1558888316 source:c:\users\pauli\documents\projetos\quicksort\quicksort.cpp
+	"Quicksort.h"
+
