@@ -7,8 +7,8 @@ int calculaMediana(int *i, int *j, int *lista);
 void ordenaCrescente(int *i, int *j, int *lista, int pivo);
 void ordenaDecrescente(int *i, int *j, int *lista, int pivo);
 int selecionaPivo(int tipoPivo, int *i, int *j, int *lista);
-void ordena(int esquerda, int direita, int *lista, int tipoPivo);
-void particao(int esquerda, int direita, int *i, int *j, int *lista, int tipoPivo);
+void ordena(int esquerda, int direita, int *lista, int tipoOrdenacao, int tipoPivo);
+void particao(int esquerda, int direita, int *i, int *j, int *lista, int tipoOrdenacao, int tipoPivo);
 
 int calculaMediana(int *i, int *j, int *lista) {
     int inicio, meio, fim;
@@ -84,29 +84,33 @@ void ordenaDecrescente(int *i, int *j, int *lista, int pivo) {
     } while (*i <= *j);
 }
 
-void particao(int esquerda, int direita, int *i, int *j, int *lista, int tipoPivo) {
+void particao(int esquerda, int direita, int *i, int *j, int *lista, int tipoOrdenacao, int tipoPivo) {
     int pivo;
     *i = esquerda;
     *j = direita;
 
     pivo = selecionaPivo(tipoPivo, i, j, lista);
-    ordenaDecrescente(i, j, lista, pivo);
+
+    if (tipoOrdenacao < 0)
+        ordenaDecrescente(i, j, lista, pivo);
+    else
+        ordenaCrescente(i, j, lista, pivo);
 }
 
 
 
-void ordena(int esquerda, int direita, int *lista, int tipoPivo) {
+void ordena(int esquerda, int direita, int *lista, int tipoOrdenacao, int tipoPivo) {
     int i, j;
 
-    particao(esquerda, direita, &i, &j, lista, tipoPivo);
+    particao(esquerda, direita, &i, &j, lista, tipoOrdenacao, tipoPivo);
 
     if (esquerda < j)
-        ordena(esquerda, j, lista, tipoPivo);
+        ordena(esquerda, j, lista, tipoOrdenacao, tipoPivo);
 
     if (i < direita)
-        ordena(i, direita, lista, tipoPivo);
+        ordena(i, direita, lista, tipoOrdenacao, tipoPivo);
 }
 
-void quicksort(int *lista, int tamanho, int tipoPivo) {
-    ordena(0, tamanho-1, lista, tipoPivo);
+void quicksort(int *lista, int tamanho, int tipoOrdenacao, int tipoPivo) {
+    ordena(0, tamanho-1, lista, tipoOrdenacao, tipoPivo);
 }

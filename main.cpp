@@ -11,7 +11,7 @@ int main() {
         std::cin >> lista[i];
     }
 
-    quicksort(lista, tamanho, 2);
+    quicksort(lista, tamanho, 1, 2);
 
     for (int i=0; i<tamanho; i++) {
         std::cout << lista[i] << " ";
