@@ -27,8 +27,8 @@ int calculaMediana(int *i, int *j, int *lista) {
     }
 }
 
-int selecionaPivo(int tipo, int *i, int *j, int *lista) {
-    switch (tipo) {
+int selecionaPivo(int tipoPivo, int *i, int *j, int *lista) {
+    switch (tipoPivo) {
         case 1:
             return lista[(*i + *j)/2];
         case 2:
@@ -38,12 +38,12 @@ int selecionaPivo(int tipo, int *i, int *j, int *lista) {
     }
 }
 
-void particao(int esquerda, int direita, int *i, int *j, int *lista, int tipo) {
+void particao(int esquerda, int direita, int *i, int *j, int *lista, int tipoPivo) {
     int pivo;
     *i = esquerda;
     *j = direita;
 
-    pivo = selecionaPivo(tipo, i, j, lista);
+    pivo = selecionaPivo(tipoPivo, i, j, lista);
 
     do {
         while (pivo > lista[*i])
@@ -62,18 +62,18 @@ void particao(int esquerda, int direita, int *i, int *j, int *lista, int tipo) {
     } while (*i <= *j);
 }
 
-void ordena(int esquerda, int direita, int *lista, int tipo) {
+void ordena(int esquerda, int direita, int *lista, int tipoPivo) {
     int i, j;
 
-    particao(esquerda, direita, &i, &j, lista, tipo);
+    particao(esquerda, direita, &i, &j, lista, tipoPivo);
 
     if (esquerda < j)
-        ordena(esquerda, j, lista, tipo);
+        ordena(esquerda, j, lista, tipoPivo);
 
     if (i < direita)
-        ordena(i, direita, lista, tipo);
+        ordena(i, direita, lista, tipoPivo);
 }
 
-void quicksort(int *lista, int tamanho, int tipo) {
-    ordena(0, tamanho-1, lista, tipo);
+void quicksort(int *lista, int tamanho, int tipoPivo) {
+    ordena(0, tamanho-1, lista, tipoPivo);
 }
