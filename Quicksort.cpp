@@ -46,6 +46,7 @@ int selecionaPivo(int tipoPivo, int *i, int *j, int *lista) {
         case 3:
             return lista[*i];
     }
+    return 0;
 }
 
 void ordenaCrescente(int *i, int *j, int *lista, int pivo) {

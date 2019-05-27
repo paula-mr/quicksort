@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Quicksort.h"
+#include "Insercao.h"
 
 int main() {
     int tamanho;
@@ -11,7 +12,7 @@ int main() {
         std::cin >> lista[i];
     }
 
-    quicksort(lista, tamanho, 1, 2);
+    insercao(lista, 0, tamanho, -1);
 
     for (int i=0; i<tamanho; i++) {
         std::cout << lista[i] << " ";
