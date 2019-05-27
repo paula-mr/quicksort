@@ -23,7 +23,7 @@ void insereDecrescente(int *lista, int inicio, int fim) {
     for (i; i >= inicio; i--) {
         int aux = lista[i];
         j = i+1;
-        while ((j < fim) && (aux < lista[j])) {
+        while ((j <= fim) && (aux < lista[j])) {
             lista[j-1] = lista[j];
             j++;
         }
