@@ -18,19 +18,20 @@
 	"Quicksort.h"
 	<iostream>
 
-1558954481 source:c:\users\dell\documents\quicksort\main.cpp
+1558956001 source:c:\users\dell\documents\quicksort\main.cpp
 	<iostream>
 	"Quicksort.h"
 	"Insercao.h"
 
-1558953710 c:\users\dell\documents\quicksort\quicksort.h
+1558954812 c:\users\dell\documents\quicksort\quicksort.h
 
 1558954276 c:\users\dell\documents\quicksort\insercao.h
 
-1558953819 source:c:\users\dell\documents\quicksort\quicksort.cpp
+1558955829 source:c:\users\dell\documents\quicksort\quicksort.cpp
 	"Quicksort.h"
+	"Insercao.h"
 	<iostream>
 
-1558954433 source:c:\users\dell\documents\quicksort\insercao.cpp
+1558955911 source:c:\users\dell\documents\quicksort\insercao.cpp
 	"Insercao.h"
 

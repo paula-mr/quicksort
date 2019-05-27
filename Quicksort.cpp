@@ -1,4 +1,5 @@
 #include "Quicksort.h"
+#include "Insercao.h"
 #include <iostream>
 
 using namespace::std;
@@ -9,6 +10,7 @@ void ordenaDecrescente(int *i, int *j, int *lista, int pivo);
 int selecionaPivo(int tipoPivo, int *i, int *j, int *lista);
 void ordena(int esquerda, int direita, int *lista, int tipoOrdenacao, int tipoPivo);
 void particao(int esquerda, int direita, int *i, int *j, int *lista, int tipoOrdenacao, int tipoPivo);
+void ordenaInsercao(int esquerda, int direita, int *lista, int quantidadeElementosInsercao, int tipoOrdenacao);
 
 int calculaMediana(int *i, int *j, int *lista) {
     int inicio, meio, fim;
@@ -110,6 +112,38 @@ void ordena(int esquerda, int direita, int *lista, int tipoOrdenacao, int tipoPi
 
     if (i < direita)
         ordena(i, direita, lista, tipoOrdenacao, tipoPivo);
+}
+
+void ordenaInsercao(int esquerda, int direita, int *lista, int quantidadeElementosInsercao, int tipoOrdenacao) {
+    int i, j;
+
+    particao(esquerda, direita, &i, &j, lista, tipoOrdenacao, 2);
+
+    if (esquerda < j) {
+        if (j-esquerda > quantidadeElementosInsercao) {
+            ordenaInsercao(esquerda, j, lista, quantidadeElementosInsercao, tipoOrdenacao);
+        }
+        else {
+            insercao(lista, esquerda, j, tipoOrdenacao);
+        }
+    }
+
+    if (i < direita) {
+        if (direita-j > quantidadeElementosInsercao) {
+            ordenaInsercao(i, direita, lista, quantidadeElementosInsercao, tipoOrdenacao);
+        }
+        else {
+            insercao(lista, i, direita, tipoOrdenacao);
+        }
+    }
+
+}
+
+void quicksortInsercao(int *lista, int tamanho, int porcentagemInsercao, int tipoOrdenacao) {
+    int quantidadeElementosInsercao = (porcentagemInsercao*tamanho)/100;
+    cout << "quantidade elementos insercao " << quantidadeElementosInsercao << "\n";
+
+    ordenaInsercao(0, tamanho-1, lista, porcentagemInsercao, tipoOrdenacao);
 }
 
 void quicksort(int *lista, int tamanho, int tipoOrdenacao, int tipoPivo) {
