@@ -31,6 +31,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Insercao.cpp" />
+		<Unit filename="Insercao.h" />
 		<Unit filename="Quicksort.cpp" />
 		<Unit filename="Quicksort.h" />
 		<Unit filename="main.cpp" />

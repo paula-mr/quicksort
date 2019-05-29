@@ -5,12 +5,10 @@
 using namespace::std;
 
 int calculaMediana(int *i, int *j, int *lista);
-void ordenaCrescente(int *i, int *j, int *lista, int pivo);
-void ordenaDecrescente(int *i, int *j, int *lista, int pivo);
 int selecionaPivo(int tipoPivo, int *i, int *j, int *lista);
-void ordena(int esquerda, int direita, int *lista, int tipoOrdenacao, int tipoPivo);
-void particao(int esquerda, int direita, int *i, int *j, int *lista, int tipoOrdenacao, int tipoPivo);
-void ordenaInsercao(int esquerda, int direita, int *lista, int quantidadeElementosInsercao, int tipoOrdenacao);
+void ordena(int esquerda, int direita, int *lista, int tipoPivo);
+void particao(int esquerda, int direita, int *i, int *j, int *lista, int tipoPivo);
+void ordenaInsercao(int esquerda, int direita, int *lista, int quantidadeElementosInsercao);
 
 int calculaMediana(int *i, int *j, int *lista) {
     int inicio, meio, fim;
@@ -51,8 +49,14 @@ int selecionaPivo(int tipoPivo, int *i, int *j, int *lista) {
     return 0;
 }
 
-void ordenaCrescente(int *i, int *j, int *lista, int pivo) {
-     do {
+void particao(int esquerda, int direita, int *i, int *j, int *lista, int tipoPivo) {
+    int pivo;
+    *i = esquerda;
+    *j = direita;
+
+    pivo = selecionaPivo(tipoPivo, i, j, lista);
+
+    do {
         while (pivo > lista[*i])
             (*i)++;
 
@@ -69,83 +73,51 @@ void ordenaCrescente(int *i, int *j, int *lista, int pivo) {
     } while (*i <= *j);
 }
 
-void ordenaDecrescente(int *i, int *j, int *lista, int pivo) {
-    do {
-        while (pivo < lista[*i])
-            (*i)++;
-
-        while (pivo > lista[*j])
-            (*j)--;
-
-        if (*i <= *j) {
-            int auxiliar = lista[*i];
-            lista[*i] = lista[*j];
-            lista[*j] = auxiliar;
-            (*i)++;
-            (*j)--;
-        }
-    } while (*i <= *j);
-}
-
-void particao(int esquerda, int direita, int *i, int *j, int *lista, int tipoOrdenacao, int tipoPivo) {
-    int pivo;
-    *i = esquerda;
-    *j = direita;
-
-    pivo = selecionaPivo(tipoPivo, i, j, lista);
-
-    if (tipoOrdenacao < 0)
-        ordenaDecrescente(i, j, lista, pivo);
-    else
-        ordenaCrescente(i, j, lista, pivo);
-}
 
 
-
-void ordena(int esquerda, int direita, int *lista, int tipoOrdenacao, int tipoPivo) {
+void ordena(int esquerda, int direita, int *lista, int tipoPivo) {
     int i, j;
 
-    particao(esquerda, direita, &i, &j, lista, tipoOrdenacao, tipoPivo);
+    particao(esquerda, direita, &i, &j, lista, tipoPivo);
 
     if (esquerda < j)
-        ordena(esquerda, j, lista, tipoOrdenacao, tipoPivo);
+        ordena(esquerda, j, lista, tipoPivo);
 
     if (i < direita)
-        ordena(i, direita, lista, tipoOrdenacao, tipoPivo);
+        ordena(i, direita, lista, tipoPivo);
 }
 
-void ordenaInsercao(int esquerda, int direita, int *lista, int quantidadeElementosInsercao, int tipoOrdenacao) {
+void ordenaInsercao(int esquerda, int direita, int *lista, int quantidadeElementosInsercao) {
     int i, j;
 
-    particao(esquerda, direita, &i, &j, lista, tipoOrdenacao, 2);
+    particao(esquerda, direita, &i, &j, lista, 2);
 
     if (esquerda < j) {
         if (j-esquerda > quantidadeElementosInsercao) {
-            ordenaInsercao(esquerda, j, lista, quantidadeElementosInsercao, tipoOrdenacao);
+            ordenaInsercao(esquerda, j, lista, quantidadeElementosInsercao);
         }
         else {
-            insercao(lista, esquerda, j, tipoOrdenacao);
+            insercao(lista, esquerda, j);
         }
     }
 
     if (i < direita) {
         if (direita-j > quantidadeElementosInsercao) {
-            ordenaInsercao(i, direita, lista, quantidadeElementosInsercao, tipoOrdenacao);
+            ordenaInsercao(i, direita, lista, quantidadeElementosInsercao);
         }
         else {
-            insercao(lista, i, direita, tipoOrdenacao);
+            insercao(lista, i, direita);
         }
     }
 
 }
 
-void quicksortInsercao(int *lista, int tamanho, int porcentagemInsercao, int tipoOrdenacao) {
+void quicksortInsercao(int *lista, int tamanho, int porcentagemInsercao) {
     int quantidadeElementosInsercao = (porcentagemInsercao*tamanho)/100;
-    cout << "quantidade elementos insercao " << quantidadeElementosInsercao << "\n";
 
-    ordenaInsercao(0, tamanho-1, lista, porcentagemInsercao, tipoOrdenacao);
+    ordenaInsercao(0, tamanho-1, lista, porcentagemInsercao);
 }
 
-void quicksort(int *lista, int tamanho, int tipoOrdenacao, int tipoPivo) {
-    ordena(0, tamanho-1, lista, tipoOrdenacao, tipoPivo);
+void quicksort(int *lista, int tamanho, int tipoPivo) {
+    ordena(0, tamanho-1, lista, tipoPivo);
 }
