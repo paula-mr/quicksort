@@ -12,7 +12,7 @@ int main() {
         std::cin >> lista[i];
     }
 
-    quicksortInsercao(lista, tamanho, 40);
+    quicksortNaoRecursivo(lista, tamanho);
 
     for (int i=0; i<tamanho; i++) {
         std::cout << lista[i] << " ";

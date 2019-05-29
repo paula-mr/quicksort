@@ -1,6 +1,7 @@
 #include "Quicksort.h"
 #include "Insercao.h"
 #include <iostream>
+#include "Pilha.h"
 
 using namespace::std;
 
@@ -120,4 +121,40 @@ void quicksortInsercao(int *lista, int tamanho, int porcentagemInsercao) {
 
 void quicksort(int *lista, int tamanho, int tipoPivo) {
     ordena(0, tamanho-1, lista, tipoPivo);
+}
+
+void quicksortNaoRecursivo(int *lista, int tamanho) {
+    Pilha* pilha = new Pilha();
+    Item* item = new Item();
+    int esquerda = 0, direita = tamanho-1, i, j;
+
+    int tipoPivo = 1;
+
+    item->esquerda = esquerda;
+    item->direita = direita;
+    pilha->empilha(item);
+
+    do {
+        if (direita > esquerda) {
+            particao(esquerda, direita, &i, &j, lista, tipoPivo);
+
+            if ((j-esquerda)>(direita-1)) {
+                item = new Item();
+                item->direita = j;
+                item->esquerda = esquerda;
+                pilha->empilha(item);
+                esquerda = i;
+            } else {
+                item = new Item();
+                item->direita = direita;
+                item->esquerda = i;
+                pilha->empilha(item);
+                direita = j;
+            }
+        } else {
+            item = pilha->desempilha();
+            direita = item->direita;
+            esquerda = item->esquerda;
+        }
+    } while (!pilha->estaVazia());
 }

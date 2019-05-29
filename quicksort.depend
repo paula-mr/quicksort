@@ -18,20 +18,32 @@
 	"Quicksort.h"
 	<iostream>
 
-1558956125 source:c:\users\dell\documents\quicksort\main.cpp
+1559092676 source:c:\users\dell\documents\quicksort\main.cpp
 	<iostream>
 	"Quicksort.h"
 	"Insercao.h"
 
-1558954812 c:\users\dell\documents\quicksort\quicksort.h
+1559092755 c:\users\dell\documents\quicksort\quicksort.h
 
-1558954276 c:\users\dell\documents\quicksort\insercao.h
+1559092563 c:\users\dell\documents\quicksort\insercao.h
 
-1558955829 source:c:\users\dell\documents\quicksort\quicksort.cpp
+1559093951 source:c:\users\dell\documents\quicksort\quicksort.cpp
 	"Quicksort.h"
 	"Insercao.h"
 	<iostream>
+	"Pilha.h"
 
-1558956163 source:c:\users\dell\documents\quicksort\insercao.cpp
+1559092558 source:c:\users\dell\documents\quicksort\insercao.cpp
 	"Insercao.h"
+
+1559093120 c:\users\dell\documents\quicksort\pilha.h
+	"Item.h"
+
+1559094084 c:\users\dell\documents\quicksort\item.h
+
+1559093891 source:c:\users\dell\documents\quicksort\item.cpp
+	"Item.h"
+
+1559093901 source:c:\users\dell\documents\quicksort\pilha.cpp
+	"Pilha.h"
 
