@@ -10,6 +10,15 @@ int selecionaPivo(int tipoPivo, int *i, int *j, int *lista);
 void ordena(int esquerda, int direita, int *lista, int tipoPivo);
 void particao(int esquerda, int direita, int *i, int *j, int *lista, int tipoPivo);
 void ordenaInsercao(int esquerda, int direita, int *lista, int quantidadeElementosInsercao);
+void imprimirLista(int *lista, int tamanho);
+
+void imprimirLista(int *lista, int tamanho) {
+    std::cout << "\n";
+    for (int i=0; i<tamanho; i++) {
+        std::cout << lista[i] << " ";
+    }
+
+}
 
 int calculaMediana(int *i, int *j, int *lista) {
     int inicio, meio, fim;
@@ -58,6 +67,7 @@ void particao(int esquerda, int direita, int *i, int *j, int *lista, int tipoPiv
     pivo = selecionaPivo(tipoPivo, i, j, lista);
 
     do {
+
         while (pivo > lista[*i])
             (*i)++;
 
@@ -73,8 +83,6 @@ void particao(int esquerda, int direita, int *i, int *j, int *lista, int tipoPiv
         }
     } while (*i <= *j);
 }
-
-
 
 void ordena(int esquerda, int direita, int *lista, int tipoPivo) {
     int i, j;
@@ -116,7 +124,7 @@ void ordenaInsercao(int esquerda, int direita, int *lista, int quantidadeElement
 void quicksortInsercao(int *lista, int tamanho, int porcentagemInsercao) {
     int quantidadeElementosInsercao = (porcentagemInsercao*tamanho)/100;
 
-    ordenaInsercao(0, tamanho-1, lista, porcentagemInsercao);
+    ordenaInsercao(0, tamanho-1, lista, quantidadeElementosInsercao);
 }
 
 void quicksort(int *lista, int tamanho, int tipoPivo) {
@@ -151,6 +159,7 @@ void quicksortNaoRecursivo(int *lista, int tamanho) {
                 pilha->empilha(item);
                 direita = j;
             }
+
         } else {
             item = pilha->desempilha();
             direita = item->direita;
