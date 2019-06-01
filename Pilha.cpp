@@ -7,18 +7,24 @@ Pilha::Pilha() {
 Pilha::~Pilha() = default;
 
 void Pilha::empilha(Item* item) {
-    this->head->proximo = item;
+    if (this->head != nullptr)
+        this->head->proximo = item;
+
     item->anterior = this->head;
     this->head = item;
 }
 
 Item* Pilha::desempilha() {
     Item* item = this->head;
-    this->head = item->anterior;
+
+    if (head->anterior == nullptr) {
+        head = nullptr;
+    } else {
+        this->head = item->anterior;
+        this->head->proximo = nullptr;
+    }
 
     item->anterior = nullptr;
-    this->head->proximo = nullptr;
-
     return item;
 }
 
