@@ -1,20 +1,12 @@
 #include <iostream>
-#include "Quicksort.h"
-#include "Insercao.h"
+#include "Orquestrador.h"
 
 int main() {
-    int tamanho;
-    int lista[100];
+    int* lista;
 
-    std::cin >> tamanho;
+    lista = gerarVetor(3, 100);
 
-    for (int i=0; i<tamanho; i++) {
-        std::cin >> lista[i];
-    }
-
-    quicksortNaoRecursivo(lista, tamanho);
-
-    for (int i=0; i<tamanho; i++) {
+    for (int i=0; i<100; i++) {
         std::cout << lista[i] << " ";
     }
 
