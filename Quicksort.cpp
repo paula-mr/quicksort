@@ -20,7 +20,7 @@ void imprimirLista(int *lista, int tamanho) {
 
 }
 
-int calculaMediana(int *i, int *j, int *lista, int *numeroComparacoes) {
+int calculaMediana(int *i, int *j, int *lista, unsigned long int *numeroComparacoes) {
     int inicio, meio, fim;
     inicio = lista[*i];
     meio = lista[(*i + *j)/2];
@@ -52,7 +52,7 @@ int calculaMediana(int *i, int *j, int *lista, int *numeroComparacoes) {
     }
 }
 
-int selecionaPivo(int tipoPivo, int *i, int *j, int *lista, int *numeroComparacoes) {
+int selecionaPivo(int tipoPivo, int *i, int *j, int *lista, unsigned long int *numeroComparacoes) {
     switch (tipoPivo) {
         case 1:
             return lista[(*i + *j)/2];
@@ -64,7 +64,7 @@ int selecionaPivo(int tipoPivo, int *i, int *j, int *lista, int *numeroComparaco
     return 0;
 }
 
-void particao(int esquerda, int direita, int *i, int *j, int *lista, int tipoPivo, int *numeroComparacoes, int *numeroTrocas) {
+void particao(int esquerda, int direita, int *i, int *j, int *lista, int tipoPivo, unsigned long int *numeroComparacoes, unsigned long int *numeroTrocas) {
     int pivo;
     *i = esquerda;
     *j = direita;
@@ -97,7 +97,7 @@ void particao(int esquerda, int direita, int *i, int *j, int *lista, int tipoPiv
     } while (*i <= *j);
 }
 
-void ordena(int esquerda, int direita, int *lista, int tipoPivo, int *numeroComparacoes, int *numeroTrocas) {
+void ordena(int esquerda, int direita, int *lista, int tipoPivo, unsigned long int *numeroComparacoes, unsigned long int *numeroTrocas) {
     int i, j;
 
     particao(esquerda, direita, &i, &j, lista, tipoPivo, numeroComparacoes, numeroTrocas);
@@ -109,7 +109,7 @@ void ordena(int esquerda, int direita, int *lista, int tipoPivo, int *numeroComp
         ordena(i, direita, lista, tipoPivo, numeroComparacoes, numeroTrocas);
 }
 
-void ordenaInsercao(int esquerda, int direita, int *lista, int quantidadeElementosInsercao, int *numeroComparacoes, int *numeroTrocas) {
+void ordenaInsercao(int esquerda, int direita, int *lista, int quantidadeElementosInsercao, unsigned long int *numeroComparacoes, unsigned long int *numeroTrocas) {
     int i, j;
 
     particao(esquerda, direita, &i, &j, lista, 2, numeroComparacoes, numeroTrocas);
@@ -134,17 +134,17 @@ void ordenaInsercao(int esquerda, int direita, int *lista, int quantidadeElement
 
 }
 
-void quicksortInsercao(int *lista, int tamanho, int porcentagemInsercao, int *numeroComparacoes, int *numeroTrocas) {
+void quicksortInsercao(int *lista, int tamanho, int porcentagemInsercao, unsigned long int *numeroComparacoes, unsigned long int *numeroTrocas) {
     int quantidadeElementosInsercao = (porcentagemInsercao*tamanho)/100;
 
     ordenaInsercao(0, tamanho-1, lista, quantidadeElementosInsercao, numeroComparacoes, numeroTrocas);
 }
 
-void quicksort(int *lista, int tamanho, int tipoPivo, int *numeroComparacoes, int *numeroTrocas) {
+void quicksort(int *lista, int tamanho, int tipoPivo, unsigned long int *numeroComparacoes, unsigned long int *numeroTrocas) {
     ordena(0, tamanho-1, lista, tipoPivo, numeroComparacoes, numeroTrocas);
 }
 
-void quicksortNaoRecursivo(int *lista, int tamanho, int *numeroComparacoes, int *numeroTrocas) {
+void quicksortNaoRecursivo(int *lista, int tamanho, unsigned long int *numeroComparacoes, unsigned long int *numeroTrocas) {
     Pilha* pilha = new Pilha();
     Item* item = new Item();
     int esquerda = 0, direita = tamanho-1, i, j;

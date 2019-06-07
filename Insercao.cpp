@@ -1,6 +1,6 @@
 #include "Insercao.h"
 
-void insercao(int *lista, int inicio, int fim, int *numeroComparacoes, int *numeroTrocas) {
+void insercao(int *lista, int inicio, int fim, unsigned long int *numeroComparacoes, unsigned long int *numeroTrocas) {
     int i = inicio, j;
 
     for (i; i <= fim; i++) {
