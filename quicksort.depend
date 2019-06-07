@@ -8,10 +8,15 @@
 	<iostream>
 	"Quicksort.h"
 
-1559873220 source:c:\users\pauli\documents\projetos\quicksort\main.cpp
+1559875487 source:c:\users\pauli\documents\projetos\quicksort\main.cpp
 	<iostream>
 	"Orquestrador.h"
 	"Quicksort.h"
+	<stdlib.h>
+	<iostream>
+	<chrono>
+	<string>
+	<stdio.h>
 
 1559873257 c:\users\pauli\documents\projetos\quicksort\quicksort.h
 

@@ -49,7 +49,7 @@ void rodarTestes(FILE *pont_arq, int *lista, int tamanho) {
     quicksortNaoRecursivo(lista, tamanho, &numeroComparacoes, &numeroTrocas);
     high_resolution_clock::time_point t2 = high_resolution_clock::now();
     duration<double, std::micro> elapsed_time = duration_cast<duration<double>>(t2 - t1);
-    fprintf(pont_arq, "%s%d%s%d%s%s%s", "Comparacoes ", numeroComparacoes, " Trocas ", numeroTrocas, " Tempo ", elapsed_time.count(), "\n\n");
+    fprintf(pont_arq, "%s%lu%s%lu%s%s%s", "Comparacoes ", numeroComparacoes, " Trocas ", numeroTrocas, " Tempo ", elapsed_time.count(), "\n\n");
     numeroComparacoes = 0; numeroTrocas = 0;
 
 
@@ -58,7 +58,7 @@ void rodarTestes(FILE *pont_arq, int *lista, int tamanho) {
     quicksort(lista, tamanho, 1, &numeroComparacoes, &numeroTrocas);
     t2 = high_resolution_clock::now();
     elapsed_time = duration_cast<duration<double>>(t2 - t1);
-    fprintf(pont_arq, "%s%d%s%d%s%s%s", "Comparacoes ", numeroComparacoes, " Trocas ", numeroTrocas, " Tempo ", elapsed_time.count(), "\n\n");
+    fprintf(pont_arq, "%s%lu%s%lu%s%s%s", "Comparacoes ", numeroComparacoes, " Trocas ", numeroTrocas, " Tempo ", elapsed_time.count(), "\n\n");
     numeroComparacoes = 0; numeroTrocas = 0;
 
     fprintf(pont_arq, "%s", "Quicksort recursivo pivo mediana\n");
@@ -66,7 +66,7 @@ void rodarTestes(FILE *pont_arq, int *lista, int tamanho) {
     quicksort(lista, tamanho, 2, &numeroComparacoes, &numeroTrocas);
     t2 = high_resolution_clock::now();
     elapsed_time = duration_cast<duration<double>>(t2 - t1);
-    fprintf(pont_arq, "%s%d%s%d%s%s%s", "Comparacoes ", numeroComparacoes, " Trocas ", numeroTrocas, " Tempo ", elapsed_time.count(), "\n\n");
+    fprintf(pont_arq, "%s%lu%s%lu%s%s%s", "Comparacoes ", numeroComparacoes, " Trocas ", numeroTrocas, " Tempo ", elapsed_time.count(), "\n\n");
     numeroComparacoes = 0; numeroTrocas = 0;
 
     fprintf(pont_arq, "%s", "Quicksort recursivo pivo primeiro elemento\n");
@@ -74,7 +74,7 @@ void rodarTestes(FILE *pont_arq, int *lista, int tamanho) {
     quicksort(lista, tamanho, 3, &numeroComparacoes, &numeroTrocas);
     t2 = high_resolution_clock::now();
     elapsed_time = duration_cast<duration<double>>(t2 - t1);
-    fprintf(pont_arq, "%s%d%s%d%s%s%s", "Comparacoes ", numeroComparacoes, " Trocas ", numeroTrocas, " Tempo ", elapsed_time.count(), "\n\n");
+    fprintf(pont_arq, "%s%lu%s%lu%s%s%s", "Comparacoes ", numeroComparacoes, " Trocas ", numeroTrocas, " Tempo ", elapsed_time.count(), "\n\n");
     numeroComparacoes = 0; numeroTrocas = 0;
 
     fprintf(pont_arq, "%s", "Quicksort com insercao 1%\n");
@@ -82,7 +82,7 @@ void rodarTestes(FILE *pont_arq, int *lista, int tamanho) {
     quicksortInsercao(lista, tamanho, 1, &numeroComparacoes, &numeroTrocas);
     t2 = high_resolution_clock::now();
     elapsed_time = duration_cast<duration<double>>(t2 - t1);
-    fprintf(pont_arq, "%s%d%s%d%s%s%s", "Comparacoes ", numeroComparacoes, " Trocas ", numeroTrocas, " Tempo ", elapsed_time.count(), "\n\n");
+    fprintf(pont_arq, "%s%lu%s%lu%s%s%s", "Comparacoes ", numeroComparacoes, " Trocas ", numeroTrocas, " Tempo ", elapsed_time.count(), "\n\n");
     numeroComparacoes = 0; numeroTrocas = 0;
 
     fprintf(pont_arq, "%s", "Quicksort com insercao 5%\n");
@@ -90,7 +90,7 @@ void rodarTestes(FILE *pont_arq, int *lista, int tamanho) {
     quicksortInsercao(lista, tamanho, 1, &numeroComparacoes, &numeroTrocas);
     t2 = high_resolution_clock::now();
     elapsed_time = duration_cast<duration<double>>(t2 - t1);
-    fprintf(pont_arq, "%s%d%s%d%s%s%s", "Comparacoes ", numeroComparacoes, " Trocas ", numeroTrocas, " Tempo ", elapsed_time.count(), "\n\n");
+    fprintf(pont_arq, "%s%lu%s%lu%s%s%s", "Comparacoes ", numeroComparacoes, " Trocas ", numeroTrocas, " Tempo ", elapsed_time.count(), "\n\n");
     numeroComparacoes = 0; numeroTrocas = 0;
 
     fprintf(pont_arq, "%s", "Quicksort com insercao 10%\n");
@@ -98,6 +98,6 @@ void rodarTestes(FILE *pont_arq, int *lista, int tamanho) {
     quicksortInsercao(lista, tamanho, 1, &numeroComparacoes, &numeroTrocas);
     t2 = high_resolution_clock::now();
     elapsed_time = duration_cast<duration<double>>(t2 - t1);
-    fprintf(pont_arq, "%s%d%s%d%s%s%s", "Comparacoes ", numeroComparacoes, " Trocas ", numeroTrocas, " Tempo ", elapsed_time.count(), "\n\n");
+    fprintf(pont_arq, "%s%lu%s%lu%s%s%s", "Comparacoes ", numeroComparacoes, " Trocas ", numeroTrocas, " Tempo ", elapsed_time.count()., "\n\n");
     numeroComparacoes = 0; numeroTrocas = 0;
 }
