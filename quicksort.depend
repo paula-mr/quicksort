@@ -8,13 +8,14 @@
 	<iostream>
 	"Quicksort.h"
 
-1559698547 source:c:\users\pauli\documents\projetos\quicksort\main.cpp
+1559872166 source:c:\users\pauli\documents\projetos\quicksort\main.cpp
 	<iostream>
 	"Orquestrador.h"
+	"Quicksort.h"
 
-1559351292 c:\users\pauli\documents\projetos\quicksort\quicksort.h
+1559871429 c:\users\pauli\documents\projetos\quicksort\quicksort.h
 
-1559356656 source:c:\users\pauli\documents\projetos\quicksort\quicksort.cpp
+1559872093 source:c:\users\pauli\documents\projetos\quicksort\quicksort.cpp
 	"Quicksort.h"
 	"Insercao.h"
 	<iostream>
@@ -49,10 +50,10 @@
 1559093901 source:c:\users\dell\documents\quicksort\pilha.cpp
 	"Pilha.h"
 
-1559351292 source:c:\users\pauli\documents\projetos\quicksort\insercao.cpp
+1559871411 source:c:\users\pauli\documents\projetos\quicksort\insercao.cpp
 	"Insercao.h"
 
-1559351292 c:\users\pauli\documents\projetos\quicksort\insercao.h
+1559871465 c:\users\pauli\documents\projetos\quicksort\insercao.h
 
 1559351292 c:\users\pauli\documents\projetos\quicksort\pilha.h
 	"Item.h"
