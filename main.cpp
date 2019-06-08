@@ -1,10 +1,14 @@
 #include <iostream>
+#include <chrono>
+#include <string>
 #include "Orquestrador.h"
 
 int converterStringParaInt(char *palavra);
 
 int main(int argc, char *argv[]) {
-    long unsigned int numeroComparacoes, numeroTrocas;
+    using namespace std::chrono;
+
+    long unsigned int numeroComparacoes = 0, numeroTrocas = 0;
     int *lista, tamanho;
     char *variacao, *tipoVetor;
     bool exibirVetores;
@@ -18,8 +22,19 @@ int main(int argc, char *argv[]) {
 
     //chama funcao que gera vetor a partir do parametro passado
     lista = gerarVetor(tipoVetor, tamanho);
+
+    //calcula tempo demorado para rodar o algoritmo
+    high_resolution_clock::time_point t1 = high_resolution_clock::now();
     //chama funcao que executa quicksort a partir do parametro passado
     executarQuicksort(variacao, lista, tamanho, &numeroComparacoes, &numeroTrocas);
+    high_resolution_clock::time_point t2 = high_resolution_clock::now();
+
+    //obtem a diferenca dos tempos em ms
+    duration<double, std::micro> elapsed_time = duration_cast<duration<double>>(t2 - t1);
+
+
+    std::cout << variacao << " " << tipoVetor << " " << tamanho << " "
+        << numeroComparacoes << " " << numeroTrocas << " " << elapsed_time.count() << "\n";
 
     return 0;
 }
@@ -29,6 +44,7 @@ int converterStringParaInt(char *palavra) {
     int soma = 0, i = 0;
 
     while (palavra[i] != '\0') {
+        soma *= 10;
         soma += palavra[i] - '0';
         i++;
     }

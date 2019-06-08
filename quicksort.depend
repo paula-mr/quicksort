@@ -8,8 +8,10 @@
 	<iostream>
 	"Quicksort.h"
 
-1559960424 source:c:\users\pauli\documents\projetos\quicksort\main.cpp
+1559961015 source:c:\users\pauli\documents\projetos\quicksort\main.cpp
 	<iostream>
+	<chrono>
+	<string>
 	"Orquestrador.h"
 
 1559873257 c:\users\pauli\documents\projetos\quicksort\quicksort.h
@@ -65,7 +67,7 @@
 1559356679 source:c:\users\pauli\documents\projetos\quicksort\pilha.cpp
 	"Pilha.h"
 
-1559960374 source:c:\users\pauli\documents\projetos\quicksort\orquestrador.cpp
+1559961130 source:c:\users\pauli\documents\projetos\quicksort\orquestrador.cpp
 	"Orquestrador.h"
 	"Quicksort.h"
 	<iostream>

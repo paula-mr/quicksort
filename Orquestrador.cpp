@@ -47,7 +47,7 @@ int* gerarVetor(char* tipo, int tamanho) {
         case 'A':
             return gerarVetorAleatorio(tamanho);
         case 'O':
-            switch (tipo[4]) {
+            switch (tipo[3]) {
                 case 'C':
                     return gerarVetorCrescente(tamanho);
                 case 'D':
