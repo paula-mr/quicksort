@@ -1,4 +1,5 @@
 #include "Orquestrador.h"
+#include "Quicksort.h"
 #include <iostream>
 #include <stdlib.h>
 
@@ -6,14 +7,52 @@ int* gerarVetorCrescente(int tamanho);
 int* gerarVetorDecrescente(int tamanho);
 int* gerarVetorAleatorio(int tamanho);
 
-int* gerarVetor(int tipo, int tamanho) {
-    switch (tipo) {
-        case 1:
-            return gerarVetorCrescente(tamanho);
-        case 2:
-            return gerarVetorDecrescente(tamanho);
-        default:
+void executarQuicksort(char* tipo, int* lista, int tamanho, long unsigned int *numeroComparacoes, long unsigned int *numeroTrocas) {
+    switch (tipo[1]) {
+        case 'C':
+            quicksort(lista, tamanho, 1, numeroComparacoes, numeroTrocas);
+            break;
+
+        case 'M':
+            quicksort(lista, tamanho, 2, numeroComparacoes, numeroTrocas);
+            break;
+
+        case 'P':
+            quicksort(lista, tamanho, 3, numeroComparacoes, numeroTrocas);
+            break;
+
+        case 'N':
+            quicksortNaoRecursivo(lista, tamanho, numeroComparacoes, numeroTrocas);
+            break;
+
+        case 'I':
+            switch(tipo[2]) {
+                case '1':
+                    if (tipo[3] == '\0')
+                        quicksortInsercao(lista, tamanho, 1, numeroComparacoes, numeroTrocas);
+                    else
+                        quicksortInsercao(lista, tamanho, 10, numeroComparacoes, numeroTrocas);
+                    break;
+
+                case '5':
+                    quicksortInsercao(lista, tamanho, 5, numeroComparacoes, numeroTrocas);
+                    break;
+            }
+            break;
+    }
+}
+
+int* gerarVetor(char* tipo, int tamanho) {
+    switch (tipo[0]) {
+        case 'A':
             return gerarVetorAleatorio(tamanho);
+        case 'O':
+            switch (tipo[4]) {
+                case 'C':
+                    return gerarVetorCrescente(tamanho);
+                case 'D':
+                    return gerarVetorDecrescente(tamanho);
+            }
     }
 }
 
