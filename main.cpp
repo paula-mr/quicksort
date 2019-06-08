@@ -36,6 +36,9 @@ int main(int argc, char *argv[]) {
     std::cout << variacao << " " << tipoVetor << " " << tamanho << " "
         << numeroComparacoes << " " << numeroTrocas << " " << elapsed_time.count() << "\n";
 
+
+    imprimirVetor(lista, tamanho);
+
     return 0;
 }
 

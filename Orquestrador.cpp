@@ -1,7 +1,8 @@
 #include "Orquestrador.h"
 #include "Quicksort.h"
 #include <iostream>
-#include <stdlib.h>
+#include <ctime>
+#include <cstdlib>
 
 int* gerarVetorCrescente(int tamanho);
 int* gerarVetorDecrescente(int tamanho);
@@ -84,6 +85,7 @@ int* gerarVetorDecrescente(int tamanho) {
 }
 
 int* gerarVetorAleatorio(int tamanho) {
+    srand(time(0));
     int* vetor = (int*) malloc(tamanho * sizeof(int));
 
     for (int i=0; i<tamanho; i++) {
