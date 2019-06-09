@@ -1,5 +1,5 @@
 #include "Orquestrador.h"
-#include "Quicksort.h"
+#include "quicksort.h"
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
@@ -8,43 +8,43 @@ int* gerarVetorCrescente(int tamanho);
 int* gerarVetorDecrescente(int tamanho);
 int* gerarVetorAleatorio(int tamanho);
 
-void executarQuicksort(Quicksort quicksort, char* tipo) {
+void executarQuicksort(Quicksort *quicksort, char* tipo) {
     switch (tipo[1]) {
         case 'C':
-            quicksort.tipoPivo = 1;
-            quicksort.quicksort();
+            quicksort->tipoPivo = 1;
+            quicksort->quicksort();
             break;
 
         case 'M':
-            quicksort.tipoPivo = 2;
-            quicksort.quicksort();
+            quicksort->tipoPivo = 2;
+            quicksort->quicksort();
             break;
 
         case 'P':
-            quicksort.tipoPivo = 3;
-            quicksort.quicksort();
+            quicksort->tipoPivo = 3;
+            quicksort->quicksort();
             break;
 
         case 'N':
-            quicksort.tipoPivo = 1;
-            quicksort.quicksortNaoRecursivo();
+            quicksort->tipoPivo = 1;
+            quicksort->quicksortNaoRecursivo();
             break;
 
         case 'I':
             switch(tipo[2]) {
                 case '1':
                     if (tipo[3] == '\0') {
-                        quicksort.porcentagemInsercao = 1;
-                        quicksort.quicksortInsercao();
+                        quicksort->porcentagemInsercao = 1;
+                        quicksort->quicksortInsercao();
                     } else {
-                        quicksort.porcentagemInsercao = 10;
-                        quicksort.quicksortInsercao();
+                        quicksort->porcentagemInsercao = 10;
+                        quicksort->quicksortInsercao();
                     }
                     break;
 
                 case '5':
-                    quicksort.porcentagemInsercao = 5;
-                    quicksort.quicksortInsercao();
+                    quicksort->porcentagemInsercao = 5;
+                    quicksort->quicksortInsercao();
                     break;
             }
             break;
@@ -63,6 +63,7 @@ int* gerarVetor(char* tipo, int tamanho) {
                     return gerarVetorDecrescente(tamanho);
             }
     }
+    return 0;
 }
 
 void imprimirVetor(int* lista, int tamanho) {

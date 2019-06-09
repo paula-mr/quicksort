@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
     //calcula tempo demorado para rodar o algoritmo
     high_resolution_clock::time_point t1 = high_resolution_clock::now();
     //chama funcao que executa quicksort a partir do parametro passado
-    executarQuicksort(quicksort, variacao);
+    executarQuicksort(&quicksort, variacao);
     high_resolution_clock::time_point t2 = high_resolution_clock::now();
 
     //obtem a diferenca dos tempos em ms

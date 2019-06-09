@@ -8,7 +8,7 @@
 	<iostream>
 	"Quicksort.h"
 
-1560048814 source:c:\users\pauli\documents\projetos\quicksort\main.cpp
+1560049219 source:c:\users\pauli\documents\projetos\quicksort\main.cpp
 	<iostream>
 	<chrono>
 	<string>
@@ -76,6 +76,6 @@
 	<ctime>
 	<cstdlib>
 
-1560048825 c:\users\pauli\documents\projetos\quicksort\orquestrador.h
+1560049225 c:\users\pauli\documents\projetos\quicksort\orquestrador.h
 	"Quicksort.h"
 
