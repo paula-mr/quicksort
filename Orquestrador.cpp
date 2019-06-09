@@ -8,35 +8,43 @@ int* gerarVetorCrescente(int tamanho);
 int* gerarVetorDecrescente(int tamanho);
 int* gerarVetorAleatorio(int tamanho);
 
-void executarQuicksort(char* tipo, int* lista, int tamanho, long unsigned int *numeroComparacoes, long unsigned int *numeroTrocas) {
+void executarQuicksort(Quicksort quicksort, char* tipo) {
     switch (tipo[1]) {
         case 'C':
-            quicksort(lista, tamanho, 1, numeroComparacoes, numeroTrocas);
+            quicksort.tipoPivo = 1;
+            quicksort.quicksort();
             break;
 
         case 'M':
-            quicksort(lista, tamanho, 2, numeroComparacoes, numeroTrocas);
+            quicksort.tipoPivo = 2;
+            quicksort.quicksort();
             break;
 
         case 'P':
-            quicksort(lista, tamanho, 3, numeroComparacoes, numeroTrocas);
+            quicksort.tipoPivo = 3;
+            quicksort.quicksort();
             break;
 
         case 'N':
-            quicksortNaoRecursivo(lista, tamanho, numeroComparacoes, numeroTrocas);
+            quicksort.tipoPivo = 1;
+            quicksort.quicksortNaoRecursivo();
             break;
 
         case 'I':
             switch(tipo[2]) {
                 case '1':
-                    if (tipo[3] == '\0')
-                        quicksortInsercao(lista, tamanho, 1, numeroComparacoes, numeroTrocas);
-                    else
-                        quicksortInsercao(lista, tamanho, 10, numeroComparacoes, numeroTrocas);
+                    if (tipo[3] == '\0') {
+                        quicksort.porcentagemInsercao = 1;
+                        quicksort.quicksortInsercao();
+                    } else {
+                        quicksort.porcentagemInsercao = 10;
+                        quicksort.quicksortInsercao();
+                    }
                     break;
 
                 case '5':
-                    quicksortInsercao(lista, tamanho, 5, numeroComparacoes, numeroTrocas);
+                    quicksort.porcentagemInsercao = 5;
+                    quicksort.quicksortInsercao();
                     break;
             }
             break;

@@ -1,19 +1,19 @@
 #include "Insercao.h"
 
-void insercao(int *lista, int inicio, int fim, unsigned long int *numeroComparacoes, unsigned long int *numeroTrocas) {
+void insercao(Quicksort *quicksort, int inicio, int fim) {
     int i = inicio, j;
 
     for (i; i <= fim; i++) {
-        int aux = lista[i];
+        int aux = quicksort->lista[i];
         j = i-1;
 
-        (*numeroComparacoes)++;
-        while ((j >= inicio) && (aux < lista[j])) {
-            (*numeroComparacoes)++;
-            lista[j+1] = lista[j];
+        quicksort->numeroComparacoes++;
+        while ((j >= inicio) && (aux < quicksort->lista[j])) {
+            quicksort->numeroComparacoes++;
+            quicksort->lista[j+1] = quicksort->lista[j];
             j--;
         }
-        lista[j+1] = aux;
-        (*numeroTrocas)++;
+        quicksort->lista[j+1] = aux;
+        quicksort->numeroTrocas++;
     }
 }

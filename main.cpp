@@ -2,14 +2,16 @@
 #include <chrono>
 #include <string>
 #include "Orquestrador.h"
+#include "Quicksort.h"
 
 int converterStringParaInt(char *palavra);
 
 int main(int argc, char *argv[]) {
     using namespace std::chrono;
 
-    long unsigned int numeroComparacoes = 0, numeroTrocas = 0;
-    int *lista, tamanho;
+    //declara variaveis
+    Quicksort quicksort;
+    int *lista, tamanho, **iteracoes;
     char *variacao, *tipoVetor;
     bool exibirVetores;
 
@@ -20,24 +22,36 @@ int main(int argc, char *argv[]) {
     //exibir vetores caso o número de parâmetros seja igual a 5
     exibirVetores = (argc == 5);
 
+    //inicializa matriz que guarda iteracoes
+    if (exibirVetores)
+        iteracoes = (int **)malloc(tamanho*tamanho * sizeof(int*));
+
     //chama funcao que gera vetor a partir do parametro passado
     lista = gerarVetor(tipoVetor, tamanho);
+
+    //preenche objeto quicksort
+    quicksort.exibirVetores = exibirVetores;
+    quicksort.lista = lista;
+    quicksort.iteracoes = iteracoes;
+    quicksort.tamanho = tamanho;
 
     //calcula tempo demorado para rodar o algoritmo
     high_resolution_clock::time_point t1 = high_resolution_clock::now();
     //chama funcao que executa quicksort a partir do parametro passado
-    executarQuicksort(variacao, lista, tamanho, &numeroComparacoes, &numeroTrocas);
+    executarQuicksort(quicksort, variacao);
     high_resolution_clock::time_point t2 = high_resolution_clock::now();
 
     //obtem a diferenca dos tempos em ms
     duration<double, std::micro> elapsed_time = duration_cast<duration<double>>(t2 - t1);
 
-
+    //imprime saida padrao
     std::cout << variacao << " " << tipoVetor << " " << tamanho << " "
-        << numeroComparacoes << " " << numeroTrocas << " " << elapsed_time.count() << "\n";
+        << quicksort.numeroComparacoes << " " << quicksort.numeroTrocas << " " << elapsed_time.count() << "\n";
 
-
-    imprimirVetor(lista, tamanho);
+    //imprime iteracoes do vetor
+    for (int i = 0; i < quicksort.numeroTrocas; i++) {
+        imprimirVetor(quicksort.iteracoes[i], quicksort.tamanho);
+    }
 
     return 0;
 }

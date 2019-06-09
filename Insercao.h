@@ -1,7 +1,9 @@
 #ifndef INSERCAO_H
 #define INSERCAO_H
 
-void insercao(int *lista, int inicio, int fim, unsigned long int *numeroComparacoes, unsigned long int *numeroTrocas);
+#include "Quicksort.h"
+
+void insercao(Quicksort *quicksort, int inicio, int fim);
 
 #endif
 

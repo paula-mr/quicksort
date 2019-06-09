@@ -5,151 +5,20 @@
 
 using namespace::std;
 
-int calculaMediana(int *i, int *j, int *lista);
-int selecionaPivo(int tipoPivo, int *i, int *j, int *lista);
-void ordena(int esquerda, int direita, int *lista, int tipoPivo);
-void particao(int esquerda, int direita, int *i, int *j, int *lista, int tipoPivo);
-void ordenaInsercao(int esquerda, int direita, int *lista, int quantidadeElementosInsercao);
-void imprimirLista(int *lista, int tamanho);
-
-void imprimirLista(int *lista, int tamanho) {
-    std::cout << "\n";
-    for (int i=0; i<tamanho; i++) {
-        std::cout << lista[i] << " ";
-    }
-
+void Quicksort::quicksort() {
+    ordena(0, tamanho-1);
 }
 
-int calculaMediana(int *i, int *j, int *lista, unsigned long int *numeroComparacoes) {
-    int inicio, meio, fim;
-    inicio = lista[*i];
-    meio = lista[(*i + *j)/2];
-    fim = lista[*j];
-
-    (*numeroComparacoes)++;
-    if (inicio < meio) {
-        (*numeroComparacoes)++;
-        if (meio < fim)
-            return meio;
-        else {
-            (*numeroComparacoes)++;
-            if (inicio < fim)
-                return fim;
-            else
-                return inicio;
-        }
-    } else {
-        (*numeroComparacoes)++;
-        if (inicio < fim)
-            return inicio;
-        else {
-            (*numeroComparacoes)++;
-            if (meio < fim)
-                return fim;
-            else
-                return meio;
-        }
-    }
-}
-
-int selecionaPivo(int tipoPivo, int *i, int *j, int *lista, unsigned long int *numeroComparacoes) {
-    switch (tipoPivo) {
-        case 1:
-            return lista[(*i + *j)/2];
-        case 2:
-            return calculaMediana(i, j, lista, numeroComparacoes);
-        case 3:
-            return lista[*i];
-    }
-    return 0;
-}
-
-void particao(int esquerda, int direita, int *i, int *j, int *lista, int tipoPivo, unsigned long int *numeroComparacoes, unsigned long int *numeroTrocas) {
-    int pivo;
-    *i = esquerda;
-    *j = direita;
-
-    pivo = selecionaPivo(tipoPivo, i, j, lista, numeroComparacoes);
-
-    do {
-
-        (*numeroComparacoes)++;
-        while (pivo > lista[*i]) {
-            (*i)++;
-            (*numeroComparacoes)++;
-        }
-
-        (*numeroComparacoes)++;
-        while (pivo < lista[*j]) {
-            (*j)--;
-            (*numeroComparacoes)++;
-        }
-
-        if (*i <= *j) {
-            int auxiliar = lista[*i];
-            lista[*i] = lista[*j];
-            lista[*j] = auxiliar;
-            (*i)++;
-            (*j)--;
-            (*numeroTrocas)++;
-        }
-
-    } while (*i <= *j);
-}
-
-void ordena(int esquerda, int direita, int *lista, int tipoPivo, unsigned long int *numeroComparacoes, unsigned long int *numeroTrocas) {
-    int i, j;
-
-    particao(esquerda, direita, &i, &j, lista, tipoPivo, numeroComparacoes, numeroTrocas);
-
-    if (esquerda < j)
-        ordena(esquerda, j, lista, tipoPivo, numeroComparacoes, numeroTrocas);
-
-    if (i < direita)
-        ordena(i, direita, lista, tipoPivo, numeroComparacoes, numeroTrocas);
-}
-
-void ordenaInsercao(int esquerda, int direita, int *lista, int quantidadeElementosInsercao, unsigned long int *numeroComparacoes, unsigned long int *numeroTrocas) {
-    int i, j;
-
-    particao(esquerda, direita, &i, &j, lista, 2, numeroComparacoes, numeroTrocas);
-
-    if (esquerda < j) {
-        if (j-esquerda > quantidadeElementosInsercao) {
-            ordenaInsercao(esquerda, j, lista, quantidadeElementosInsercao, numeroComparacoes, numeroTrocas);
-        }
-        else {
-            insercao(lista, esquerda, j, numeroComparacoes, numeroTrocas);
-        }
-    }
-
-    if (i < direita) {
-        if (direita-j > quantidadeElementosInsercao) {
-            ordenaInsercao(i, direita, lista, quantidadeElementosInsercao, numeroComparacoes, numeroTrocas);
-        }
-        else {
-            insercao(lista, i, direita, numeroComparacoes, numeroTrocas);
-        }
-    }
-
-}
-
-void quicksortInsercao(int *lista, int tamanho, int porcentagemInsercao, unsigned long int *numeroComparacoes, unsigned long int *numeroTrocas) {
+void Quicksort::quicksortInsercao() {
     int quantidadeElementosInsercao = (porcentagemInsercao*tamanho)/100;
 
-    ordenaInsercao(0, tamanho-1, lista, quantidadeElementosInsercao, numeroComparacoes, numeroTrocas);
+    ordenaInsercao(0, tamanho-1, quantidadeElementosInsercao);
 }
 
-void quicksort(int *lista, int tamanho, int tipoPivo, unsigned long int *numeroComparacoes, unsigned long int *numeroTrocas) {
-    ordena(0, tamanho-1, lista, tipoPivo, numeroComparacoes, numeroTrocas);
-}
-
-void quicksortNaoRecursivo(int *lista, int tamanho, unsigned long int *numeroComparacoes, unsigned long int *numeroTrocas) {
+void Quicksort::quicksortNaoRecursivo() {
     Pilha* pilha = new Pilha();
     Item* item = new Item();
     int esquerda = 0, direita = tamanho-1, i, j;
-
-    int tipoPivo = 1;
 
     item->esquerda = esquerda;
     item->direita = direita;
@@ -157,7 +26,7 @@ void quicksortNaoRecursivo(int *lista, int tamanho, unsigned long int *numeroCom
 
     do {
         if (direita > esquerda) {
-            particao(esquerda, direita, &i, &j, lista, tipoPivo, numeroComparacoes, numeroTrocas);
+            particao(esquerda, direita, &i, &j);
 
             if ((j-esquerda)>(direita-1)) {
                 item = new Item();
@@ -179,4 +48,126 @@ void quicksortNaoRecursivo(int *lista, int tamanho, unsigned long int *numeroCom
             esquerda = item->esquerda;
         }
     } while (!pilha->estaVazia());
+}
+
+void Quicksort::ordena(int esquerda, int direita) {
+    int i, j;
+
+    particao(esquerda, direita, &i, &j);
+
+    if (esquerda < j)
+        ordena(esquerda, j);
+
+    if (i < direita)
+        ordena(i, direita);
+}
+
+void Quicksort::ordenaInsercao(int esquerda, int direita, int quantidadeElementosInsercao) {
+    int i, j;
+
+    particao(esquerda, direita, &i, &j);
+
+    if (esquerda < j) {
+        if (j-esquerda > quantidadeElementosInsercao) {
+            ordenaInsercao(esquerda, j, quantidadeElementosInsercao);
+        }
+        else {
+            insercao(this, esquerda, j);
+        }
+    }
+
+    if (i < direita) {
+        if (direita-j > quantidadeElementosInsercao) {
+            ordenaInsercao(i, direita, quantidadeElementosInsercao);
+        }
+        else {
+            insercao(this, i, direita);
+        }
+    }
+
+}
+
+void Quicksort::particao(int esquerda, int direita, int *i, int *j) {
+    int pivo;
+    *i = esquerda;
+    *j = direita;
+
+    pivo = selecionaPivo(i, j);
+
+    do {
+
+        numeroComparacoes++;
+        while (pivo > lista[*i]) {
+            (*i)++;
+            numeroComparacoes++;
+        }
+
+        numeroComparacoes++;
+        while (pivo < lista[*j]) {
+            (*j)--;
+            numeroComparacoes++;
+        }
+
+        if (*i <= *j) {
+            int auxiliar = lista[*i];
+            lista[*i] = lista[*j];
+            lista[*j] = auxiliar;
+            (*i)++;
+            (*j)--;
+            numeroTrocas++;
+        }
+
+        if (exibirVetores)
+            guardarIteracoes();
+
+    } while (*i <= *j);
+}
+
+int Quicksort::calculaMediana(int *i, int *j) {
+    int inicio, meio, fim;
+    inicio = lista[*i];
+    meio = lista[(*i + *j)/2];
+    fim = lista[*j];
+
+    numeroComparacoes++;
+    if (inicio < meio) {
+        numeroComparacoes++;
+        if (meio < fim)
+            return meio;
+        else {
+            numeroComparacoes++;
+            if (inicio < fim)
+                return fim;
+            else
+                return inicio;
+        }
+    } else {
+        numeroComparacoes++;
+        if (inicio < fim)
+            return inicio;
+        else {
+            numeroComparacoes++;
+            if (meio < fim)
+                return fim;
+            else
+                return meio;
+        }
+    }
+}
+
+int Quicksort::selecionaPivo(int *i, int *j) {
+    switch (tipoPivo) {
+        case 1:
+            return lista[(*i + *j)/2];
+        case 2:
+            return calculaMediana(i, j);
+        case 3:
+            return lista[*i];
+    }
+    return 0;
+}
+
+void Quicksort::guardarIteracoes() {
+    for (int i=0; i < tamanho; i++)
+        iteracoes[numeroTrocas][i] = lista[i];
 }
