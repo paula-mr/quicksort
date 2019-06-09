@@ -49,8 +49,10 @@ int main(int argc, char *argv[]) {
         << quicksort.numeroComparacoes << " " << quicksort.numeroTrocas << " " << elapsed_time.count() << "\n";
 
     //imprime iteracoes do vetor
-    for (int i = 0; i < quicksort.numeroTrocas; i++) {
-        imprimirVetor(quicksort.iteracoes[i], quicksort.tamanho);
+    if (exibirVetores) {
+        for (int i = 0; i < quicksort.numeroTrocas; i++) {
+            imprimirVetor(quicksort.iteracoes[i], quicksort.tamanho);
+        }
     }
 
     return 0;
