@@ -121,6 +121,9 @@ void Quicksort::particao(int esquerda, int direita, int *i, int *j) {
             guardarIteracoes();
 
     } while (*i <= *j);
+
+    if (exibirVetores)
+        guardarIteracoes();
 }
 
 int Quicksort::calculaMediana(int *i, int *j) {
@@ -168,6 +171,15 @@ int Quicksort::selecionaPivo(int *i, int *j) {
 }
 
 void Quicksort::guardarIteracoes() {
-    for (int i=0; i < tamanho; i++)
-        iteracoes[numeroTrocas][i] = lista[i];
+
+    int **auxiliar = (int **)malloc((numeroTrocas+1) * sizeof(int*));
+    std::copy(iteracoes, iteracoes+numeroTrocas, auxiliar);
+
+    auxiliar[numeroTrocas] = (int*)malloc(tamanho * sizeof(int*));
+    for (int i=0; i < tamanho; i++) {
+        auxiliar[numeroTrocas][i] = lista[i];
+    }
+
+    free(iteracoes);
+    iteracoes = auxiliar;
 }

@@ -70,6 +70,8 @@ void imprimirVetor(int* lista, int tamanho) {
     for (int i=0; i<tamanho; i++) {
         std::cout << lista[i] << " ";
     }
+
+    std::cout << "\n";
 }
 
 

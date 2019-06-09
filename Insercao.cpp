@@ -3,7 +3,7 @@
 void insercao(Quicksort *quicksort, int inicio, int fim) {
     int i = inicio, j;
 
-    for (i; i <= fim; i++) {
+    for (; i <= fim; i++) {
         int aux = quicksort->lista[i];
         j = i-1;
 
@@ -15,5 +15,6 @@ void insercao(Quicksort *quicksort, int inicio, int fim) {
         }
         quicksort->lista[j+1] = aux;
         quicksort->numeroTrocas++;
+        quicksort->guardarIteracoes();
     }
 }

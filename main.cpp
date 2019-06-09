@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
 
     //declara variaveis
     Quicksort quicksort;
-    int *lista, tamanho, **iteracoes;
+    int *lista, tamanho;
     char *variacao, *tipoVetor;
     bool exibirVetores;
 
@@ -22,18 +22,20 @@ int main(int argc, char *argv[]) {
     //exibir vetores caso o número de parâmetros seja igual a 5
     exibirVetores = (argc == 5);
 
-    //inicializa matriz que guarda iteracoes
-    if (exibirVetores)
-        iteracoes = (int **)malloc(tamanho*tamanho * sizeof(int*));
-
     //chama funcao que gera vetor a partir do parametro passado
     lista = gerarVetor(tipoVetor, tamanho);
 
     //preenche objeto quicksort
     quicksort.exibirVetores = exibirVetores;
     quicksort.lista = lista;
-    quicksort.iteracoes = iteracoes;
     quicksort.tamanho = tamanho;
+    quicksort.iteracoes = (int **)malloc(sizeof(int*));
+    if (exibirVetores) {
+        quicksort.iteracoes[0] = (int *)malloc(tamanho * sizeof(int));
+        for (int i=0; i < tamanho; i++) {
+            quicksort.iteracoes[0][i] = lista[i];
+        }
+    }
 
     //calcula tempo demorado para rodar o algoritmo
     high_resolution_clock::time_point t1 = high_resolution_clock::now();
