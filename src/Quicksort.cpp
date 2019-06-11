@@ -171,15 +171,15 @@ int Quicksort::selecionaPivo(int *i, int *j) {
 }
 
 void Quicksort::guardarIteracoes() {
+    if (exibirVetores) {
+        int **auxiliar = (int **)malloc((numeroTrocas+1) * sizeof(int*));
+        std::copy(iteracoes, iteracoes+numeroTrocas, auxiliar);
+        auxiliar[numeroTrocas] = (int*)malloc(tamanho * sizeof(int*));
+        for (int i=0; i < tamanho; i++) {
+            auxiliar[numeroTrocas][i] = lista[i];
+        }
 
-    int **auxiliar = (int **)malloc((numeroTrocas+1) * sizeof(int*));
-    std::copy(iteracoes, iteracoes+numeroTrocas, auxiliar);
-
-    auxiliar[numeroTrocas] = (int*)malloc(tamanho * sizeof(int*));
-    for (int i=0; i < tamanho; i++) {
-        auxiliar[numeroTrocas][i] = lista[i];
+        free(iteracoes);
+        iteracoes = auxiliar;
     }
-
-    free(iteracoes);
-    iteracoes = auxiliar;
 }
