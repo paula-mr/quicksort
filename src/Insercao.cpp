@@ -3,10 +3,8 @@
 
 void insercao(Quicksort *quicksort, int inicio, int fim) {
     int i = inicio, j;
-    std::cout << "entrei";
 
     for (; i <= fim; i++) {
-        std::cout << "teste";
         int aux = quicksort->lista[i];
         j = i-1;
 

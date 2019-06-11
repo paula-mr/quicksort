@@ -31,8 +31,8 @@ void executarQuicksort(Quicksort *quicksort, char* tipo) {
             break;
 
         case 'I':
+            quicksort->tipoPivo = 2;
             switch(tipo[2]) {
-                quicksort->tipoPivo = 2;
                 case '1':
                     if (tipo[3] == '\0') {
                         quicksort->porcentagemInsercao = 1;

@@ -72,7 +72,6 @@ void Quicksort::ordenaInsercao(int esquerda, int direita, int quantidadeElemento
             ordenaInsercao(esquerda, j, quantidadeElementosInsercao);
         }
         else {
-            cout << "AQUI";
             insercao(this, esquerda, j);
         }
     }
@@ -82,7 +81,6 @@ void Quicksort::ordenaInsercao(int esquerda, int direita, int quantidadeElemento
             ordenaInsercao(i, direita, quantidadeElementosInsercao);
         }
         else {
-                    cout << "AQUI";
             insercao(this, i, direita);
         }
     }
