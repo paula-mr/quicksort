@@ -52,7 +52,7 @@ int main(int argc, char *argv[]) {
 
     //imprime iteracoes do vetor
     if (exibirVetores) {
-        for (int i = 0; i < quicksort.numeroTrocas; i++) {
+        for (unsigned long int i = 0; i < quicksort.numeroTrocas; i++) {
             imprimirVetor(quicksort.iteracoes[i], quicksort.tamanho);
         }
     }
