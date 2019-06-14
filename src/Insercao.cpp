@@ -8,6 +8,7 @@ void insercao(Quicksort *quicksort, int inicio, int fim) {
         int aux = quicksort->lista[i];
         j = i-1;
 
+        //percorre vetor em busca de elemento menor que i
         quicksort->numeroComparacoes = quicksort->numeroComparacoes+1;
         while ((j >= inicio) && (aux < quicksort->lista[j])) {
             quicksort->lista[j+1] = quicksort->lista[j];

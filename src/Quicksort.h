@@ -3,6 +3,7 @@
 
 class Quicksort {
     public:
+        //define atributos padrao para o funcionamento do quicksort
         int* lista;
         int tamanho;
         int tipoPivo;

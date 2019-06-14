@@ -8,7 +8,14 @@ int* gerarVetorCrescente(int tamanho);
 int* gerarVetorDecrescente(int tamanho);
 int* gerarVetorAleatorio(int tamanho);
 
+/*
+    TIPO PIVO
+    1 - ELEMENTO CENTRAL
+    2 - MEDIANA
+    3 - PRIMEIRO ELEMENTO
+*/
 void executarQuicksort(Quicksort *quicksort, char* tipo) {
+    //varia entre os tipos a partir do segundo caracter
     switch (tipo[1]) {
         case 'C':
             quicksort->tipoPivo = 1;
@@ -30,6 +37,8 @@ void executarQuicksort(Quicksort *quicksort, char* tipo) {
             quicksort->quicksortNaoRecursivo();
             break;
 
+        /*caso o caracter seja I, eh preciso ainda decidir
+          qual tipo de insercao sera utilizada*/
         case 'I':
             quicksort->tipoPivo = 2;
             switch(tipo[2]) {

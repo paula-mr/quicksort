@@ -11,6 +11,7 @@ int main(int argc, char *argv[]) {
 
     if (argc < 4) {
         std::cout << "Quantidade de parâmetros inválida."
+        return 1;
     }
 
     //declara variaveis
@@ -33,8 +34,10 @@ int main(int argc, char *argv[]) {
     quicksort.exibirVetores = exibirVetores;
     quicksort.lista = lista;
     quicksort.tamanho = tamanho;
-    quicksort.iteracoes = (int **)malloc(sizeof(int*));
+    /*caso deva exibir os vetores intermediarios, preenche o vetor
+      de iteracoes com o vetor inicial*/
     if (exibirVetores) {
+        quicksort.iteracoes = (int **)malloc(sizeof(int*));
         quicksort.iteracoes[0] = (int *)malloc(tamanho * sizeof(int));
         for (int i=0; i < tamanho; i++) {
             quicksort.iteracoes[0][i] = lista[i];

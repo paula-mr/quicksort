@@ -3,13 +3,12 @@
 #include <iostream>
 #include "Pilha.h"
 
-using namespace::std;
-
 void Quicksort::quicksort() {
     ordena(0, tamanho-1);
 }
 
 void Quicksort::quicksortInsercao() {
+    //calcula a partir de quantos elementos deve-se utilizar insercao
     int quantidadeElementosInsercao = (porcentagemInsercao*tamanho)/100;
 
     ordenaInsercao(0, tamanho-1, quantidadeElementosInsercao);
@@ -20,6 +19,7 @@ void Quicksort::quicksortNaoRecursivo() {
     Item* item = new Item();
     int esquerda = 0, direita = tamanho-1, i, j;
 
+    //simula pilha do computador para executar a ordenacao
     item->esquerda = esquerda;
     item->direita = direita;
     pilha->empilha(item);
@@ -28,6 +28,7 @@ void Quicksort::quicksortNaoRecursivo() {
         if (direita > esquerda) {
             particao(esquerda, direita, &i, &j);
 
+            //empilha o maior vetor para minimizar o tamanho da pilha
             if ((j-esquerda)>(direita-1)) {
                 item = new Item();
                 item->direita = j;
@@ -43,6 +44,8 @@ void Quicksort::quicksortNaoRecursivo() {
             }
 
         } else {
+            /*seleciona a proxima iteracao da pilha quando a computada
+               termina de ser executada*/
             item = pilha->desempilha();
             direita = item->direita;
             esquerda = item->esquerda;
@@ -67,6 +70,8 @@ void Quicksort::ordenaInsercao(int esquerda, int direita, int quantidadeElemento
 
     particao(esquerda, direita, &i, &j);
 
+    /*executa insercao caso o tamanho do vetor seja menor ou igual que o definido
+      como minimo para se executar a insercao*/
     if (esquerda < j) {
         if (j-esquerda > quantidadeElementosInsercao) {
             ordenaInsercao(esquerda, j, quantidadeElementosInsercao);
@@ -92,22 +97,28 @@ void Quicksort::particao(int esquerda, int direita, int *i, int *j) {
     *i = esquerda;
     *j = direita;
 
+    //seleciona pivo a partir do atributo de controle da classe
     pivo = selecionaPivo(i, j);
 
     do {
 
+        /*percorre o vetor do inicio ate encontrar um elemento
+          maior que o pivo */
         numeroComparacoes++;
         while (pivo > lista[*i]) {
             (*i)++;
             numeroComparacoes++;
         }
 
+        /*percorre o vetor do fim ate encontrar um elemento
+          menor que o pivo */
         numeroComparacoes++;
         while (pivo < lista[*j]) {
             (*j)--;
             numeroComparacoes++;
         }
 
+        //caso i seja menor ou igual a j, troca-se os elementos
         if (*i <= *j) {
             int auxiliar = lista[*i];
             lista[*i] = lista[*j];
