@@ -9,6 +9,10 @@ int converterStringParaInt(char *palavra);
 int main(int argc, char *argv[]) {
     using namespace std::chrono;
 
+    if (argc < 4) {
+        std::cout << "Quantidade de parâmetros inválida."
+    }
+
     //declara variaveis
     Quicksort quicksort;
     int *lista, tamanho;
