@@ -19,7 +19,7 @@ declare -a arrayTypes=(
     "OrdD"
 )
 
-dir="output/"
+dir="output2/"
 underscore="_"
 
 for arrSize in {50000..500000..50000}; do
